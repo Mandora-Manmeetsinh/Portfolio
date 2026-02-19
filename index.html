@@ -1362,6 +1362,175 @@
         padding: 20px;
       }
     }
+
+    /* CHATBOT */
+    #cb-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 56px;
+      height: 56px;
+      background: var(--accent);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px var(--accent-glow);
+      z-index: 999;
+      transition: transform .2s;
+    }
+
+    #cb-btn:hover {
+      transform: scale(1.05);
+    }
+
+    #cb-btn svg {
+      width: 28px;
+      height: 28px;
+      fill: #fff;
+    }
+
+    #cb-win {
+      position: fixed;
+      bottom: 96px;
+      right: 24px;
+      width: 340px;
+      height: 480px;
+      background: rgba(19, 19, 31, 0.95);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px) scale(0.95);
+      transition: all .3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    #cb-win.open {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0) scale(1);
+    }
+
+    .cb-head {
+      padding: 18px 20px;
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cb-title {
+      font-family: var(--font-h);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .cb-close {
+      cursor: pointer;
+      font-size: 20px;
+      color: var(--muted);
+      line-height: 1;
+    }
+
+    .cb-msgs {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .msg {
+      max-width: 85%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 12.5px;
+      line-height: 1.5;
+      position: relative;
+    }
+
+    .msg.bot {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-bottom-left-radius: 2px;
+      align-self: flex-start;
+    }
+
+    .msg.user {
+      background: var(--accent);
+      color: #fff;
+      border-bottom-right-radius: 2px;
+      align-self: flex-end;
+    }
+
+    .cb-opts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .cb-opt {
+      font-size: 11px;
+      padding: 6px 12px;
+      background: var(--surface2);
+      border: 1px solid var(--border2);
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all .2s;
+      color: var(--accent);
+    }
+
+    .cb-opt:hover {
+      border-color: var(--accent);
+      background: rgba(124, 106, 247, 0.1);
+    }
+
+    .cb-input {
+      padding: 14px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 10px;
+    }
+
+    .cb-in {
+      flex: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      border-radius: 20px;
+      color: var(--text);
+      font-family: var(--font-b);
+      font-size: 12px;
+    }
+
+    .cb-in:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .cb-send {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   </style>
 </head>
 
@@ -2030,10 +2199,28 @@
   </section>
 
   <footer>
-    <div class="f-logo">MM<span>.</span></div>
+    <div class="f-logo">Mandora Manmeetsinh<span>.</span></div>
     <div>Designed &amp; Built by Manmeetsinh Mandora · Bharuch, India · 2025</div>
     <div>Full Stack Developer · Open to Work</div>
   </footer>
+
+  <!-- CHATBOT HTML -->
+  <div id="cb-btn">
+    <svg viewBox="0 0 24 24">
+      <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" />
+    </svg>
+  </div>
+  <div id="cb-win">
+    <div class="cb-head">
+      <div class="cb-title">Manmeet's AI Assistant</div>
+      <div class="cb-close">×</div>
+    </div>
+    <div class="cb-msgs" id="cb-msgs"></div>
+    <div class="cb-input">
+      <input type="text" class="cb-in" id="cb-in" placeholder="Type a message...">
+      <button class="cb-send" id="cb-send">➤</button>
+    </div>
+  </div>
 
   <script>
     // Cursor
@@ -2077,6 +2264,131 @@
       el.style.transition = `opacity .7s ease ${i * .13}s, transform .7s ease ${i * .13}s`;
       requestAnimationFrame(() => requestAnimationFrame(() => { el.style.opacity = '1'; el.style.transform = 'none'; }));
     });
+
+    // CHATBOT LOGIC
+    const cbBtn = document.getElementById('cb-btn');
+    const cbWin = document.getElementById('cb-win');
+    const cbClose = document.querySelector('.cb-close');
+    const cbMsgs = document.getElementById('cb-msgs');
+    const cbIn = document.getElementById('cb-in');
+    const cbSend = document.getElementById('cb-send');
+
+    let chatStep = 0;
+    let userInfo = { name: '', email: '', desc: '' };
+
+    cbBtn.addEventListener('click', () => {
+      cbWin.classList.toggle('open');
+      if (cbMsgs.children.length === 0) startChat();
+    });
+    cbClose.addEventListener('click', () => cbWin.classList.remove('open'));
+
+    function addMsg(txt, type) {
+      const d = document.createElement('div');
+      d.className = `msg ${type}`;
+      d.innerText = txt;
+      cbMsgs.appendChild(d);
+      cbMsgs.scrollTop = cbMsgs.scrollHeight;
+    }
+
+    function addOpts(opts) {
+      const d = document.createElement('div');
+      d.className = 'cb-opts';
+      opts.forEach(o => {
+        const b = document.createElement('div');
+        b.className = 'cb-opt';
+        b.innerText = o.label;
+        b.onclick = () => handleOpt(o.action, o.label);
+        d.appendChild(b);
+      });
+      cbMsgs.appendChild(d);
+      cbMsgs.scrollTop = cbMsgs.scrollHeight;
+    }
+
+    function startChat() {
+      addMsg("Hi there! 👋 I'm Manmeet's AI assistant.", 'bot');
+      setTimeout(() => {
+        addMsg("How can I help you today?", 'bot');
+        addOpts([
+          { label: "Hire Manmeet", action: "hire" },
+          { label: "View Projects", action: "proj" },
+          { label: "Tech Stack?", action: "tech" },
+          { label: "Just saying hi", action: "hi" }
+        ]);
+      }, 600);
+    }
+
+    function handleOpt(act, label) {
+      addMsg(label, 'user');
+      if (act === 'proj') {
+        addMsg("Great choice! Scrolling you to the projects section...", 'bot');
+        document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => cbWin.classList.remove('open'), 1000);
+      } else if (act === 'tech') {
+        addMsg("Manmeet is an expert in React.js, Next.js, Node.js, and Android (Kotlin). He also works with AI integrations.", 'bot');
+        setTimeout(() => {
+          addMsg("Anything else?", 'bot');
+          addOpts([{ label: "Hire Him", action: "hire" }, { label: "Close", action: "close" }]);
+        }, 1000);
+      } else if (act === 'hi') {
+        addMsg("Hello! Feel free to look around. Manmeet is always open to interesting conversations.", 'bot');
+      } else if (act === 'close') {
+        cbWin.classList.remove('open');
+      } else if (act === 'hire') {
+        chatStep = 1;
+        addMsg("That's awesome! Let's get you connected. First, what's your name?", 'bot');
+      }
+    }
+
+    cbSend.addEventListener('click', sendUserMsg);
+    cbIn.addEventListener('keypress', e => { if (e.key === 'Enter') sendUserMsg(); });
+
+    function sendUserMsg() {
+      const txt = cbIn.value.trim();
+      if (!txt) return;
+      addMsg(txt, 'user');
+      cbIn.value = '';
+
+      if (chatStep === 1) {
+        userInfo.name = txt;
+        chatStep = 2;
+        setTimeout(() => addMsg(`Nice to meet you, ${userInfo.name}! What's your email address?`, 'bot'), 400);
+      } else if (chatStep === 2) {
+        userInfo.email = txt;
+        chatStep = 3;
+        setTimeout(() => addMsg("Got it. Lastly, tell me a bit about your project or inquiry.", 'bot'), 400);
+      } else if (chatStep === 3) {
+        userInfo.desc = txt;
+        chatStep = 0;
+        addMsg("Sending your details to Manmeet...", 'bot');
+
+        // Formspree Submission
+        fetch("https://formspree.io/f/manmeetmandora20@gmail.com", {
+          method: "POST",
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: userInfo.name,
+            email: userInfo.email,
+            message: `[CHATBOT LEAD] ${userInfo.desc}`
+          })
+        }).then(r => {
+          if (r.ok) addMsg("Sent successfully! 🚀 Manmeet will get back to you immediately.", 'bot');
+          else addMsg("Oops, something went wrong. Please try the email link above.", 'bot');
+        }).catch(() => addMsg("Network error. Please try again.", 'bot'));
+      } else {
+        // General Chat Fallback
+        setTimeout(() => {
+          const lower = txt.toLowerCase();
+          if (lower.includes('price') || lower.includes('cost') || lower.includes('rate')) {
+            addMsg("My rates start from ₹1500/hr for frontend work.", 'bot');
+          } else if (lower.includes('contact') || lower.includes('email')) {
+            addMsg("You can email me at manmeetmandora20@gmail.com", 'bot');
+          } else {
+            addMsg("I'm just a simple bot, but I can connect you with Manmeet. Select 'Hire Manmeet' to leave a message!", 'bot');
+            addOpts([{ label: "Hire Manmeet", action: "hire" }]);
+          }
+        }, 600);
+      }
+    }
   </script>
 </body>
 
