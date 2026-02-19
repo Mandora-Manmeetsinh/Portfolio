@@ -1,109 +1,73 @@
-# 🚀 Professional Portfolio — Manmeetsinh Mandora
+# �‍💻 Manmeetsinh Mandora — Full Stack Developer
 
-[![Vercel Deployment](https://img.shields.io/badge/Deployment-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com)
-[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion/)
+[![Vercel Deployment](https://img.shields.io/badge/Status-Live-success?style=for-the-badge&logo=vercel)](https://vercel.com)
+[![GitHub](https://img.shields.io/badge/GitHub-Mandora--Manmeetsinh-black?style=for-the-badge&logo=github)](https://github.com/Mandora-Manmeetsinh)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Mandora--Manmeetsinh-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/mandora-manmeetsinh-306950296)
 
-A premium, highly-interactive portfolio built for a **Full Stack Developer & Product Builder**. Featuring smooth animations, glassmorphism design, and a performance-optimized architecture.
+I'm a **Full Stack Developer & Product Builder** based in **Surat, Gujarat**, passionate about turning complex problems into elegant, user-friendly applications. From production-grade web apps to interactive 3D experiences, I build digital products that matter.
 
 ---
 
-## ✨ Key Features
+## 📊 Stats at a Glance
 
-- **🎯 Custom Cursor**: Smooth, reactive cursor following for enhanced interactivity.
-- **🌊 Scroll Reveal**: Content gracefully animates into view as you scroll.
-- **📱 Responsive Design**: Fully optimized for Desktop, Tablet, and Mobile devices.
-- **🎭 Framer Motion**: Advanced micro-interactions and page transitions.
-- **🎨 Glassmorphism UI**: Modern aesthetic with blurred backgrounds and vibrant gradients.
-- **🚀 Performance**: Built with Vite for lightning-fast HMR and production builds.
-- **🛠️ Tech Ticker**: Animated marquee showcasing the modern tech stack.
+| 🚀 Projects | 🏆 Hackathons | 💼 Clients | 📍 Location |
+| :---: | :---: | :---: | :---: |
+| **31+** Repos | **3+** Events | **5+** Global | Surat, India |
 
 ---
 
-## 🛠️ Tech Stack
+## ✨ About Me
 
-### Frontend
-- **Framework**: React 18 with TypeScript
-- **Styling**: Tailwind CSS & Lucide Icons
-- **Components**: shadcn/ui
-- **Animations**: Framer Motion
-- **Tooling**: Vite for fast development
-
-### Data & State
-- **Queries**: TanStack Query (React Query)
-- **Forms**: React Hook Form with Zod validation
+- 🛠️ **Full Stack Expertise**: Experience spanning React, Node.js, Android, and AI integration.
+- 🏅 **Hackathon Finalist**: Reached the finals of Vadodara Hackathon 5.0 with "Herbarium 2.0".
+- 🌍 **Global Reach**: Delivered solutions for clients across India and internationally.
+- 💡 **Problem Solver**: Active on LeetCode and HackerRank, always refining my algorithmic skills.
 
 ---
 
-## 🚀 Getting Started
+## 🛠️ Tech Stack & Skills
 
-### Prerequisites
-- Node.js (Latest LTS recommended)
-- npm or bun
+### 💻 Languages
+`JavaScript` `TypeScript` `Python` `Java` `Kotlin` `HTML5/CSS3` `SQL`
 
-### Installation
+### 🎨 Frontend
+`React.js` `Next.js` `Tailwind CSS` `Framer Motion` `Redux/Zustand` `shadcn/ui` `Chart.js`
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Mandora-Manmeetsinh/Portfolio.git
-   cd Portfolio
-   ```
+### ⚙️ Backend & Cloud
+`Node.js` `Express.js` `REST APIs` `GraphQL` `AWS` `Docker` `GitHub Actions`
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   # or
-   bun install
-   ```
-
-3. **Start development server**
-   ```bash
-   npm run dev
-   ```
-
-4. **Build for production**
-   ```bash
-   npm run build
-   ```
+### � Database & Mobile
+`MongoDB` `MySQL` `PostgreSQL` `Firebase` `Redis` `Android (Kotlin)`
 
 ---
 
-## 📦 Project Structure
+## 🌟 Featured Projects
 
-```text
-src/
-├── components/     # UI Components (Navbar, Hero, Projects, etc.)
-│   └── ui/         # Reusable shadcn/ui components
-├── data/           # Static content (projects, skills, testimonials)
-├── hooks/          # Custom React hooks
-├── lib/            # Utility functions & shared logic
-├── pages/          # Page-level components
-└── App.tsx         # Main application entry
-```
+1.  **HealthGenieAI**: AI-powered healthcare assistant for symptom analysis.
+2.  **Herbarium 2.0**: Award-winning digital herbarium with 3D plant models.
+3.  **Synapse.io**: Real-time social media analytics dashboard.
+4.  **Student Hub**: Comprehensive Android app for attendance and grade management.
+5.  **Automatic Timetable Generator**: Intelligent scheduling system using constraint algorithms.
 
 ---
 
-## 🌐 Deployment
+## 🚀 Professional Services
 
-This project is optimized for **Vercel**.
-
-1. Connect your GitHub repository to Vercel.
-2. Vercel will automatically detect the Vite configuration.
-3. Add any necessary environment variables.
-4. Deploy with a single click.
+- 🌐 **Full Stack Development**: End-to-end web application building.
+- 📱 **Android Development**: Native mobile apps using Kotlin.
+- 🤖 **AI Integration**: Adding intelligent features to your existing platforms.
+- 🗄️ **Database Design**: Optimized and scalable data architectures.
 
 ---
 
-## 👤 Author
+## � Connect With Me
 
-**Manmeetsinh Mandora**
 - [GitHub](https://github.com/Mandora-Manmeetsinh)
-- [Portfolio](https://lovable.dev/projects/c02c9395-dea0-49b6-b9d8-3dcbf5476374)
+- [LinkedIn](https://www.linkedin.com/in/mandora-manmeetsinh-306950296)
+- [LeetCode](https://leetcode.com/u/OfAk2AI95N/)
+- [HackerRank](https://www.hackerrank.com/profile/manmeetmandora20)
 
 ---
 
 ## 📄 License
-
-This project is licensed under the **MIT License**.
+This project is licensed under the MIT License.
