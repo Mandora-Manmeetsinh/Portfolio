@@ -1,73 +1,109 @@
-# Welcome to your Lovable project
+# 🚀 Professional Portfolio — Manmeetsinh Mandora
 
-## Project info
+[![Vercel Deployment](https://img.shields.io/badge/Deployment-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com)
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion/)
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+A premium, highly-interactive portfolio built for a **Full Stack Developer & Product Builder**. Featuring smooth animations, glassmorphism design, and a performance-optimized architecture.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## ✨ Key Features
 
-**Use Lovable**
+- **🎯 Custom Cursor**: Smooth, reactive cursor following for enhanced interactivity.
+- **🌊 Scroll Reveal**: Content gracefully animates into view as you scroll.
+- **📱 Responsive Design**: Fully optimized for Desktop, Tablet, and Mobile devices.
+- **🎭 Framer Motion**: Advanced micro-interactions and page transitions.
+- **🎨 Glassmorphism UI**: Modern aesthetic with blurred backgrounds and vibrant gradients.
+- **🚀 Performance**: Built with Vite for lightning-fast HMR and production builds.
+- **🛠️ Tech Ticker**: Animated marquee showcasing the modern tech stack.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Tech Stack
 
-**Use your preferred IDE**
+### Frontend
+- **Framework**: React 18 with TypeScript
+- **Styling**: Tailwind CSS & Lucide Icons
+- **Components**: shadcn/ui
+- **Animations**: Framer Motion
+- **Tooling**: Vite for fast development
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Data & State
+- **Queries**: TanStack Query (React Query)
+- **Forms**: React Hook Form with Zod validation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## 🚀 Getting Started
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Prerequisites
+- Node.js (Latest LTS recommended)
+- npm or bun
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Installation
 
-# Step 3: Install the necessary dependencies.
-npm i
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Mandora-Manmeetsinh/Portfolio.git
+   cd Portfolio
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   bun install
+   ```
+
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Build for production**
+   ```bash
+   npm run build
+   ```
+
+---
+
+## 📦 Project Structure
+
+```text
+src/
+├── components/     # UI Components (Navbar, Hero, Projects, etc.)
+│   └── ui/         # Reusable shadcn/ui components
+├── data/           # Static content (projects, skills, testimonials)
+├── hooks/          # Custom React hooks
+├── lib/            # Utility functions & shared logic
+├── pages/          # Page-level components
+└── App.tsx         # Main application entry
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🌐 Deployment
 
-**Use GitHub Codespaces**
+This project is optimized for **Vercel**.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. Connect your GitHub repository to Vercel.
+2. Vercel will automatically detect the Vite configuration.
+3. Add any necessary environment variables.
+4. Deploy with a single click.
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## 👤 Author
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+**Manmeetsinh Mandora**
+- [GitHub](https://github.com/Mandora-Manmeetsinh)
+- [Portfolio](https://lovable.dev/projects/c02c9395-dea0-49b6-b9d8-3dcbf5476374)
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## 📄 License
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+This project is licensed under the **MIT License**.
