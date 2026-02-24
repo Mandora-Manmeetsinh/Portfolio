@@ -1531,6 +1531,62 @@
       align-items: center;
       justify-content: center;
     }
+
+    /* CONTACT FORM */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      margin-top: 40px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--muted);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background: var(--bg);
+      border: 1px solid var(--border2);
+      padding: 12px 16px;
+      color: var(--text);
+      font-family: var(--font-b);
+      font-size: 13px;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .form-btn {
+      background: var(--accent);
+      color: #fff;
+      padding: 14px;
+      border: none;
+      font-family: var(--font-h);
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .form-btn:hover {
+      box-shadow: 0 0 20px var(--accent-glow);
+      transform: translateY(-2px);
+    }
   </style>
 </head>
 
@@ -1766,42 +1822,42 @@
             <div class="svc-name">Frontend Development</div>
             <div class="svc-desc">React, Next.js, TypeScript, Responsive UI</div>
           </div>
-          <div class="svc-rate">From 1500/hr</div>
+          <div class="svc-rate">From 1500/hr inr</div>
         </div>
         <div class="svc fu">
           <div class="svc-info">
             <div class="svc-name">Backend & API Development</div>
             <div class="svc-desc">Node.js, Express, REST APIs, Auth systems</div>
           </div>
-          <div class="svc-rate">From 1800/hr</div>
+          <div class="svc-rate">From 1800/hr inr</div>
         </div>
         <div class="svc fu">
           <div class="svc-info">
             <div class="svc-name">Full Stack Web Apps</div>
             <div class="svc-desc">End-to-end product development &amp; deployment</div>
           </div>
-          <div class="svc-rate">From 35000/project</div>
+          <div class="svc-rate">From 35000/project inr</div>
         </div>
         <div class="svc fu">
           <div class="svc-info">
             <div class="svc-name">Database Architecture</div>
             <div class="svc-desc">MongoDB, MySQL, Firebase, query optimization</div>
           </div>
-          <div class="svc-rate">From 1200/hr</div>
+          <div class="svc-rate">From 1200/hr inr</div>
         </div>
         <div class="svc fu">
           <div class="svc-info">
             <div class="svc-name">Android Development</div>
             <div class="svc-desc">Kotlin, Firebase, Material Design, Play Store</div>
           </div>
-          <div class="svc-rate">From 2000/hr</div>
+          <div class="svc-rate">From 2000/hr inr</div>
         </div>
         <div class="svc fu">
           <div class="svc-info">
             <div class="svc-name">AI Integration & Automation</div>
             <div class="svc-desc">LLM APIs, chatbots, workflow automation</div>
           </div>
-          <div class="svc-rate">From 2500/hr</div>
+          <div class="svc-rate">From 2500/hr inr</div>
         </div>
       </div>
     </div>
@@ -2194,6 +2250,23 @@
           <div class="ci-icon">✅</div>
           <div class="ci-text"><strong>Availability</strong><span>Open for new projects now</span></div>
         </div>
+
+        <!-- NEW CONTACT FORM -->
+        <form class="contact-form" action="https://formspree.io/animeintel91@gmail.com" method="POST">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="_replyto" placeholder="email@example.com" required>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea name="message" rows="4" placeholder="How can I help you?" required></textarea>
+          </div>
+          <button type="submit" class="form-btn">Send Message →</button>
+        </form>
       </div>
     </div>
   </section>
@@ -2333,6 +2406,10 @@
         addMsg("Hello! Feel free to look around. Manmeet is always open to interesting conversations.", 'bot');
       } else if (act === 'close') {
         cbWin.classList.remove('open');
+      } else if (act === 'scroll_skills') {
+        addMsg("Scrolling to technical arsenal...", 'bot');
+        document.getElementById('skills').scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => cbWin.classList.remove('open'), 1000);
       } else if (act === 'hire') {
         chatStep = 1;
         addMsg("That's awesome! Let's get you connected. First, what's your name?", 'bot');
@@ -2348,11 +2425,17 @@
       addMsg(txt, 'user');
       cbIn.value = '';
 
+      const lower = txt.toLowerCase();
+
       if (chatStep === 1) {
         userInfo.name = txt;
         chatStep = 2;
         setTimeout(() => addMsg(`Nice to meet you, ${userInfo.name}! What's your email address?`, 'bot'), 400);
       } else if (chatStep === 2) {
+        if (!txt.includes('@')) {
+          addMsg("Please enter a valid email address.", 'bot');
+          return;
+        }
         userInfo.email = txt;
         chatStep = 3;
         setTimeout(() => addMsg("Got it. Lastly, tell me a bit about your project or inquiry.", 'bot'), 400);
@@ -2361,30 +2444,59 @@
         chatStep = 0;
         addMsg("Sending your details to Manmeet...", 'bot');
 
-        // Formspree Submission
-        fetch("https://formspree.io/f/manmeetmandora20@gmail.com", {
+        // Formspree Submission - Reverted to email but recommend using a Form ID from Formspree.io
+        fetch("https://formspree.io/manmeetmandora20@gmail.com", {
           method: "POST",
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
           body: JSON.stringify({
             name: userInfo.name,
             email: userInfo.email,
             message: `[CHATBOT LEAD] ${userInfo.desc}`
           })
         }).then(r => {
-          if (r.ok) addMsg("Sent successfully! 🚀 Manmeet will get back to you immediately.", 'bot');
-          else addMsg("Oops, something went wrong. Please try the email link above.", 'bot');
-        }).catch(() => addMsg("Network error. Please try again.", 'bot'));
-      } else {
-        // General Chat Fallback
-        setTimeout(() => {
-          const lower = txt.toLowerCase();
-          if (lower.includes('price') || lower.includes('cost') || lower.includes('rate')) {
-            addMsg("My rates start from ₹1500/hr for frontend work.", 'bot');
-          } else if (lower.includes('contact') || lower.includes('email')) {
-            addMsg("You can email me at manmeetmandora20@gmail.com", 'bot');
+          if (r.ok) {
+            addMsg("Sent successfully! 🚀 Manmeet will get back to you soon.", 'bot');
           } else {
-            addMsg("I'm just a simple bot, but I can connect you with Manmeet. Select 'Hire Manmeet' to leave a message!", 'bot');
+            console.error("Formspree Error:", r);
+            addMsg("Oops, something went wrong. But you can email me directly at manmeetmandora20@gmail.com", 'bot');
+          }
+        }).catch(err => {
+          console.error("Network Error:", err);
+          addMsg("Network error. Please try the email link above.", 'bot');
+        });
+      } else {
+        // Smarter Rule-Based AI Logic
+        setTimeout(() => {
+          if (lower.includes('price') || lower.includes('cost') || lower.includes('rate') || lower.includes('fee')) {
+            addMsg("Rates vary by project. Generally: Frontend starts from ₹1500/hr, Backend from ₹1800/hr, and Full Stack starts around ₹35,000.", 'bot');
+            addMsg("Would you like to get a custom quote?", 'bot');
+            addOpts([{ label: "Yes, get a quote", action: "hire" }, { label: "No thanks", action: "hi" }]);
+          } else if (lower.includes('skill') || lower.includes('stack') || lower.includes('know') || lower.includes('tech')) {
+            addMsg("I'm an expert in React.js, Next.js, Node.js, and Android (Kotlin). I also have experience with AWS, Docker, and AI integrations.", 'bot');
+            addMsg("Check out my 'Skills' section for the full list!", 'bot');
+            addOpts([{ label: "View Skills", action: "scroll_skills" }]);
+          } else if (lower.includes('project') || lower.includes('work') || lower.includes('portfolio') || lower.includes('show')) {
+            addMsg("I've built 31+ projects including AI assistants, social platforms, and even games like Chess Wizards!", 'bot');
+            addOpts([{ label: "View Projects", action: "proj" }]);
+          } else if (lower.includes('contact') || lower.includes('email') || lower.includes('reach') || lower.includes('phone')) {
+            addMsg("You can email me at manmeetmandora20@gmail.com or hit the 'Hire Me' button here to leave a message!", 'bot');
             addOpts([{ label: "Hire Manmeet", action: "hire" }]);
+          } else if (lower.includes('where') || lower.includes('location') || lower.includes('live') || lower.includes('base')) {
+            addMsg("I am based in Bharuch, Gujarat, India 🇮🇳. I work remotely for clients worldwide.", 'bot');
+          } else if (lower.includes('gujarat') || lower.includes('kem') || lower.includes('tame')) {
+            addMsg("Majama chu! 😊 I speak English, Hindi, and Gujarati. How can I help you?", 'bot');
+          } else if (lower.includes('hi') || lower.includes('hello') || lower.includes('hey')) {
+            addMsg("Hello! I'm Manmeet's AI assistant. Ready to help you build something great.", 'bot');
+            addOpts([{ label: "Hire Manmeet", action: "hire" }, { label: "View Work", action: "proj" }]);
+          } else if (lower.includes('resume') || lower.includes('cv')) {
+            addMsg("I can certainly share my resume with you. Please leave your email and I'll send it over!", 'bot');
+            addOpts([{ label: "Leave Email", action: "hire" }]);
+          } else {
+            addMsg("I'm not sure about that, but Manmeet definitely is! Want to leave him a message?", 'bot');
+            addOpts([{ label: "Yes, Hire Him", action: "hire" }, { label: "Just Browsing", action: "hi" }]);
           }
         }, 600);
       }
